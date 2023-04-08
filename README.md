@@ -1,9 +1,9 @@
 # nFactorial-AI-Cup-AppTrack
 
-## < Your Name >
+## Darkhan Almakhan
 
 
-## < Your App's Name >
+## Fraudless
 
 
 ## Typeform to submit:
