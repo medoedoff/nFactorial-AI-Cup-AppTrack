@@ -1,24 +1,17 @@
 import telebot
 import os
 
-from dotenv import load_dotenv
-
 from flask import Flask
 from flask import request
-
-load_dotenv()
+from settings import teleBot
+from handlers import handlers
 
 apiKey = os.getenv("API_KEY")
 webHookHostname = os.getenv("NGROK_HOSTNAME")
 
-teleBot = telebot.TeleBot(apiKey)
-
 app = Flask(__name__)
 
-
-@teleBot.message_handler(commands=["start"])
-def sendMessage(message):
-    teleBot.reply_to(message, f"Hello, from there")
+app.register_blueprint(handlers)
 
 
 @app.route(f"/{apiKey}", methods=["POST"])
