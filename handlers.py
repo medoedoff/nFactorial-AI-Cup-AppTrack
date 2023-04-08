@@ -1,11 +1,17 @@
 from settings import teleBot
 from flask import Blueprint
+from models import CohereClassification
 
 @teleBot.message_handler(commands=["start"])
 def sendMessage(message):
     teleBot.send_message(message.chat.id, "Greetings! Send me your suspicious message")
 
+@teleBot.message_handler(func=lambda message: True)
+def messageFromUser(message):
+    cohereClassification = CohereClassification(message=message.text)
+    print(message.text)
+    response = cohereClassification.get()
+    teleBot.reply_to(message, response)
 
-
-# Convert the tele_bot instance to a Flask blueprint
+# Convert the handlers instance to a Flask blueprint
 handlers = Blueprint("handlers", __name__)
