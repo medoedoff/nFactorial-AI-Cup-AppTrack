@@ -9,8 +9,8 @@ def sendMessage(message):
 @teleBot.message_handler(func=lambda message: True)
 def messageFromUser(message):
     cohereClassification = CohereClassification(message=message.text)
-    print(message.text)
     response = cohereClassification.get()
+    print(response)
     teleBot.reply_to(message, response)
 
 # Convert the handlers instance to a Flask blueprint
