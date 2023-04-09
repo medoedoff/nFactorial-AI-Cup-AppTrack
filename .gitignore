@@ -1,3 +1,5 @@
 preprocessing/
 .DS_Store
 .env
+*.ogg
+*.wav
